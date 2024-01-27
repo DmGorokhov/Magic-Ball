@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, session
 from magic_ball.settings import Configs
 from flask_session import Session
 from flask import redirect, url_for
@@ -29,7 +29,7 @@ def index():
         question = form.question.data.strip()
         answer = get_answer()
         prediction = Prediction(question, answer, datetime.now())
-        session['predictions'] = session.get('predictions', []) + [prediction]
+        session.setdefault('predictions', []).append(prediction)
         return redirect(url_for('index'))
 
     return render_template('index.html',
