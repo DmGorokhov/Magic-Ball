@@ -12,6 +12,7 @@ gunicorn = "^21.2.0"
 make = "^0.1.6.post2"
 python-dotenv = "^1.0.1"
 flask-session = "^0.6.0"
+flask-wtf = "^1.2.1"
 
 
 [tool.poetry.group.dev.dependencies]

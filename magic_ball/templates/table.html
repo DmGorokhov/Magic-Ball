@@ -1,0 +1,28 @@
+<div class="col-12 col-md-10 col-lg-11 mx-auto mt-5">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-nowrap" data-test="urls">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Ваш вопрос</th>
+                <th>Ответ</th>
+                <th>Когда был получен ответ</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if predictions %}
+                {% for prediction in predictions|sort(attribute='date', reverse=true) %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>
+                        {{ prediction.question }}
+                    </td>
+                    <td>{{ prediction.answer }}</td>
+                    <td>{{ prediction.date.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

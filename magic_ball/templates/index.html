@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div class="row">
+<div class="row">
     <div class="col-12 col-md-10 col-lg-11 mx-auto border rounded-3 bg-light p-2">
-      <h1 class="display-3">Место предсказаний</h1>
-      <p class="lead">Узнайте ответы на свои извечные вопросы</p>
-      <form action="/urls" method="post" class="d-flex justify-content-center" required>
-        <input type="text" name="url" placeholder="Напишите здесь свой вопрос"
-               value="{{ uncorrect_url|default('', true) }}"  
-               class="form-control form-control-lg">
-        <input type="submit" class="btn btn-primary  btn-lg ms-3 px-5 text-uppercase mx-3" value="Найти ответ">
-      </form>
+        <h1 class="display-3">Место предсказаний</h1>
+        <p class="lead">Узнайте ответы на свои извечные вопросы</p>
+
+        <form action="/" method="post" class="d-flex justify-content-center" required>
+            {{ form.hidden_tag() }}
+            {{ form.question.label(class_='form-label') }} {{ form.question(class_='form-control form-control-lg') }}
+            {{ form.submit(class_='btn btn-primary btn-lg ms-3 px-5 text-uppercase mx-3') }}
+        </form>
+        {% if answer %}
+        <h2 class="mt-3 mb-3">Мой тебе ответ: {{ answer }} </h2>
+        {% endif %}
     </div>
-  </div>
-{% endblock%}
+
+    {% include 'table.html' %}
+
+{% endblock %}
