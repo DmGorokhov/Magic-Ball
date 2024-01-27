@@ -1,4 +1,4 @@
-### Hexlet tests and linter status:
+### Linter status:
 [![Maintainability](https://api.codeclimate.com/v1/badges/79cd5baa75e2d3433ee5/maintainability)](https://codeclimate.com/github/DmGorokhov/Magic-Ball/maintainability)
 
 ### About:
