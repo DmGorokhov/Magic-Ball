@@ -2,7 +2,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/79cd5baa75e2d3433ee5/maintainability)](https://codeclimate.com/github/DmGorokhov/Magic-Ball/maintainability)
 
 ### About:
-Magic Ball- it's a page of predictions.  
+[Magic Ball](https://magic-ball-vzao.onrender.com)- it's a page of predictions.  
 Here you can ask a worrying question and get an answer
 
 
@@ -14,6 +14,7 @@ Here you can ask a worrying question and get an answer
 * flask-wtf >= 1.2.1
 * gunicorn >= 21.2.0
 * python-dotenv >= 1.0.0
+* htmx >= 1.9
 * Make (is used to run utility through console-command)
 * Poetry >1.2.2
 
