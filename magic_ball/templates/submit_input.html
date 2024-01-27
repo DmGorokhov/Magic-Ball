@@ -1,0 +1,7 @@
+<div>
+    <h2 class="mt-3 mb-3 ms-3">Ваш вопрос: {{ question }} </h2>
+    <form action="{{ url_for('ask_answer') }}" method="post" class="d-flex justify-content-start">
+        <input type="hidden" name="clean_question" value="{{ question }}">
+        <button class="btn btn-primary btn-lg ms-3 px-3 text-uppercase mx-4">Получить ответ</button>
+    </form>
+</div>

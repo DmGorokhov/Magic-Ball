@@ -5,16 +5,11 @@
         <h1 class="display-3">Место предсказаний</h1>
         <p class="lead">Узнайте ответы на свои извечные вопросы</p>
 
-        <form action="/" method="post" class="d-flex justify-content-center" required>
+        <form hx-post="{{ url_for('get_question') }}" hx-swap="outerHTML" action="/" method="post"
+              class="d-flex justify-content-center" required>
             {{ form.hidden_tag() }}
             {{ form.question.label(class_='form-label') }} {{ form.question(class_='form-control form-control-lg') }}
-            {{ form.submit(class_='btn btn-primary btn-lg ms-3 px-5 text-uppercase mx-3') }}
         </form>
-        {% if answer %}
-        <h2 class="mt-3 mb-3">Мой тебе ответ: {{ answer }} </h2>
-        {% endif %}
     </div>
-
     {% include 'table.html' %}
-
 {% endblock %}

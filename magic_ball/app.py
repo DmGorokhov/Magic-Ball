@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, request
 from magic_ball.settings import Configs
 from flask_session import Session
 from flask import redirect, url_for
@@ -24,18 +24,26 @@ Prediction = namedtuple('Prediction', ['question', 'answer', 'date'])
 @app.route("/", methods=["GET", "POST"])
 def index():
     form = QuestionForm()
-    answer = ''
-    if form.validate_on_submit():
-        question = form.question.data.strip()
-        answer = get_answer()
-        prediction = Prediction(question, answer, datetime.now())
-        session.setdefault('predictions', []).append(prediction)
-        return redirect(url_for('index'))
-
     return render_template('index.html',
                            form=form,
-                           answer=answer,
                            predictions=session.get('predictions', []))
+
+
+@app.route('/submit-question', methods=['POST'])
+def get_question():
+    question = request.form.get('question')
+    if question:
+        clean_question = question.strip()
+        return render_template('submit_input.html', question=clean_question)
+
+
+@app.route('/answer', methods=['POST'])
+def ask_answer():
+    answer = get_answer()
+    question = request.form.get('clean_question')
+    prediction = Prediction(question, answer, datetime.now())
+    session.setdefault('predictions', []).append(prediction)
+    return redirect(url_for('index'))
 
 
 @app.errorhandler(404)
