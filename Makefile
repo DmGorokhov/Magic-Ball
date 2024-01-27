@@ -10,3 +10,6 @@ start:
 
 lint:
 		poetry run flake8 magic_ball
+
+clean-sessions:
+		rm -r flask_session
